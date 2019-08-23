@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Coder's Point | UpdateDisplay</title>
+    <style>
+        .input1{
+            height:40px;
+            border-radius:10px;
+        }
+
+    </style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h2 align="center">Details</h2>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+          <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form method="post">{% csrf_token %}
+            <td><input type="text" class="input1" name="name" placeholder="Enter FullName..." value="{{value.name}}" required></td>
+            <td><input type="text" class="input1" maxlength=10 minlength=10 name="phone" value="{{value.phone}}" placeholder="Enter Phone Number..." required></td>
+            <td><input type="email" class="input1" name="email" placeholder="Enter Email Address..." value="{{value.email}}" required></td>
+            <td><input type="submit" class="btn btn-success"></td>
+        </form>
+    </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+    <title> Display Portfolio </title>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<center><h1> {{value.title}} </h1></center>
+<hr>
+</div>
+<div class="container">
+    <img src="{{ value.image.url }}" style="width:50%;height:250px;margin-left:24%" alt="Loading Image">
+</div><br>
+<div class="container text-secondary">
+<center><h3> OverView </h3></center>
+<hr>
+    {{value.summary}}
+
+</div>
+
+{% endblock %}

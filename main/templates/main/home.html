@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>Project | Home</title>
+{% endblock %}
+{% block content %}
+
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Programming Institute</h1>
+      <p class="lead text-muted">Everybody in this country should learn to program a computer , <b>because it teaches you how to think.</b></p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Core Programming</a>
+        <a href="#" class="btn btn-secondary my-2">AI / ML</a>
+      </p>
+    </div>
+  </section>
+  <div class="album py-5 bg-light" style="position:relative">
+    <div class="container">
+      <div class="row">
+    {% for value in values %}
+        <div class="col-md-4">
+          <h3><center><a href="/displayportfolio/{{value.id}}" class="text-dark">{{value.title}}</a></center></h3>
+          <div class="card mb-4 shadow-sm">
+            <img class="bd-placeholder-img card-img-top" src="{{value.image.url}}" width="100%" height="225" />
+            <div class="card-body">
+              <p class="card-text">{{value.details}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div class="btn-group">
+                  {% if value.user == user %}
+                  <a href="/delete/{{value.id}}" class="btn btn-sm btn-outline-secondary">Delete</a>
+                  <a href="/update/{{value.id}}" class="btn btn-sm btn-outline-secondary">Update</a>
+                  {% endif %}
+                </div>
+                <small class="text-muted">{{value.time}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

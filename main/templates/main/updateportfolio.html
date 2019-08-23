@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Update</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Update</h1><hr>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" name="title" value="{{value.title}}" PLACEHOLDER="Title" required><br><br>
+    <textarea name="summary" style="width:250px;height:250px;"> {{value.summary}}</textarea><br><br>
+    <input type="file" name="image" value="{{value.image.url}}" required><br><br>
+    <input type="submit" value="Update">
+</form>
+</div>
+{% endblock %}

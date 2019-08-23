@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Coder's Point | Display</title>
+    <style>
+        .input1{
+            height:40px;
+            border-radius:10px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 align="center">Details</h2>
+  <table class="table table-dark table-striped">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Phone Number</th>
+        <th>Email Address</th>
+          <th></th>
+          <th></th>
+          <th></th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form method="post">{% csrf_token %}
+            <td><input type="text" class="input1" name="name" placeholder="Enter FullName..." required></td>
+            <td><input type="text" class="input1" maxlength=10 minlength=10 name="phone" placeholder="Enter Phone Number..." required></td>
+            <td><input type="email" class="input1" name="email" placeholder="Enter Email Address..." required></td>
+            <td><input type="submit" class="btn btn-success"></td>
+            <td></td>
+            <td></td>
+        </form>
+    </tr>
+    {% for value in values %}
+    <tr>
+        <td>{{value.name}}</td>
+        <td>{{value.phone}}</td>
+        <td>{{value.email}}</td>
+        <td><a href="/deletedetail/{{value.id}}" class="btn btn-danger">Delete</a></td>
+        <td><a href="/updatedetail/{{value.id}}" class="btn btn-secondary">Update</a></td>
+        <td><a href="" class="btn btn-primary">Email</a></td>
+        <td><a href="" class="btn btn-success">SMS</a></td>
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
